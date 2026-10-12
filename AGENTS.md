@@ -1,9 +1,111 @@
+---
+title: "Drama and Disability AGENTS Policy"
+version: "1.0.0"
+author: "Double-FW"
+date: "2026-10-12"
+license: "CC-BY-4.0"
+language: "en"
+repository: "Double-FW/Drama-and-Disability"
+artifact_type: "agent_policy"
+use_case:
+  - "creative-guidance"
+  - "editorial-review"
+  - "agent-guardrails"
+main_entities:
+  - "disability"
+  - "drama"
+  - "film"
+  - "theatre"
+  - "representation"
+  - "casting"
+  - "accessibility"
+  - "speculative-fiction"
+  - "multiverse"
+  - "disabled-creators"
+---
+
 # AGENTS.md
 
 ## Purpose
 This repository is a creative and critical archive about disability in drama, film, theatre, and speculative fiction. The work here should treat disability as a meaningful artistic and human dimension, not as a shorthand for tragedy, villainy, inspiration, or absence.
 
 This document is a guide for contributors, editors, and AI assistants working on the repository. It sets the tone for how material should be framed, evaluated, and expanded.
+
+## Machine-readable policy profile
+
+The following YAML and JSON blobs are intended for automation and agent parsing. They define the repository's policy schema in a format that can be read by scripts or model tooling before acting.
+
+```yaml
+policy:
+  id: "dd-agents-policy-v1"
+  name: "Drama and Disability AGENTS Policy"
+  repository: "Double-FW/Drama-and-Disability"
+  artifact_type: "agent_policy"
+  status: "active"
+  version: "1.0.0"
+  language: "en"
+  scope:
+    - "writing"
+    - "editing"
+    - "review"
+    - "analysis"
+    - "creative-ideation"
+  principles:
+    - id: "p1"
+      rule: "Center disabled people as full human beings."
+      severity: "critical"
+    - id: "p2"
+      rule: "Treat disability as a creative opportunity, not a constraint."
+      severity: "high"
+    - id: "p3"
+      rule: "Avoid exploitative or reductionist framing."
+      severity: "critical"
+    - id: "p4"
+      rule: "Challenge ableist default assumptions in story and analysis."
+      severity: "high"
+    - id: "p5"
+      rule: "Distinguish authentic representation from tokenism."
+      severity: "high"
+  required_checks:
+    - "Does the work center disabled people with agency and complexity?"
+    - "Does it challenge stereotypes or expand artistic understanding?"
+    - "Does it rely on evidence, cultural context, and lived experience?"
+    - "Does it avoid paternalism, pity, or cure narratives unless clearly framed as critique?"
+  escalation:
+    trigger: "Any content undermining disability dignity, authenticity, or agency"
+    response: "Revise, annotate, or reject the material and explain the reason."
+```
+
+```json
+{
+  "policy": {
+    "id": "dd-agents-policy-v1",
+    "name": "Drama and Disability AGENTS Policy",
+    "repository": "Double-FW/Drama-and-Disability",
+    "artifact_type": "agent_policy",
+    "version": "1.0.0",
+    "language": "en",
+    "scope": ["writing", "editing", "review", "analysis", "creative-ideation"],
+    "principles": [
+      {"id": "p1", "rule": "Center disabled people as full human beings.", "severity": "critical"},
+      {"id": "p2", "rule": "Treat disability as a creative opportunity, not a constraint.", "severity": "high"},
+      {"id": "p3", "rule": "Avoid exploitative or reductionist framing.", "severity": "critical"},
+      {"id": "p4", "rule": "Challenge ableist default assumptions in story and analysis.", "severity": "high"},
+      {"id": "p5", "rule": "Distinguish authentic representation from tokenism.", "severity": "high"}
+    ],
+    "required_checks": [
+      "Does the work center disabled people with agency and complexity?",
+      "Does it challenge stereotypes or expand artistic understanding?",
+      "Does it rely on evidence, cultural context, and lived experience?",
+      "Does it avoid paternalism, pity, or cure narratives unless clearly framed as critique?"
+    ],
+    "escalation": {
+      "trigger": "Any content undermining disability dignity, authenticity, or agency",
+      "response": "Revise, annotate, or reject the material and explain the reason."
+    }
+  }
+}
+```
 
 ## Core policy
 
@@ -123,6 +225,91 @@ The repository should be open to expansive, imaginative, and unusual ideas. Disa
 - Disabled characters as authors, directors, or world-builders rather than mere subjects of stories.
 - Worldbuilding where accommodation is not a side note but a social invention with dramatic consequences.
 
+## Template prompts and response patterns
+These templates are intentionally short and reusable by agents.
+
+### Prompt template: contribution review
+"Review the following draft for disability representation and cultural framing. Identify any ableist assumptions, pity framing, cure narratives, or tokenistic representation. Recommend revision steps and cite the repository policy sections that apply."
+
+### Prompt template: creative ideation
+"Generate 5 story concepts involving disability that are not framed as tragedy, pity, or cure. Each concept should include a premise, a conflict, and a distinct creative opportunity for representation."
+
+### Prompt template: editorial rewrite
+"Rewrite the following paragraph to center disabled people as full agents, remove ableist assumptions, and ensure the language is respectful, precise, and not reductionist. Preserve the original meaning where possible."
+
+### Response template: revision recommendation
+"Issue: [summary of problem].
+Reason: [why this conflicts with repository policy].
+Action: [what to revise].
+Policy references: [p1, p3, p5 or relevant sections]."
+
+### Response template: approval summary
+"Approved for repository use: the piece centers disabled people, avoids pity/cure framing, and contributes substantively to the conversation about disability in drama and performance."
+
+## Observability, audit, and escalation requirements
+All significant checks, edits, or escalations should be observable and reviewable.
+
+### Minimum audit log fields
+- timestamp_utc
+- user_or_agent_id
+- repository
+- file_path
+- policy_version
+- decision
+- rationale
+- reviewer_or_system
+- escalated (true/false)
+- redaction_applied (true/false)
+
+### Retention and handling
+- Keep audit records for a minimum of 24 months, or longer if required by organizational policy.
+- Store only policy-relevant metadata; avoid retaining unnecessary personal details.
+- Redact names, private identifiers, or user-submitted contact details if they are not essential to the audit trail.
+- Prefer pseudonymous or role-based references in shared logs.
+
+### Escalation rules
+When a draft or claim is likely to undermine disability dignity, authenticity, or agency:
+1. Flag the content.
+2. Record the reason and the relevant policy rule.
+3. Request revision or rejection.
+4. Preserve a summary of the issue in the audit log.
+5. If a dispute arises, route to a human reviewer with the policy references attached.
+
+### Required redaction rules
+- Remove direct personal identifiers from generated summaries unless useful for a human review trail.
+- Do not expose private contact details in prompts, logs, or public issue comments.
+- Avoid storing sensitive medical information in general repository logs.
+
+## Quick-start checklist
+Use this checklist before accepting, revising, or publishing any work.
+
+- [ ] Does the piece center disabled people as full human beings?
+- [ ] Does it avoid pity, cure, or moral lesson framing unless clearly critiquing those tropes?
+- [ ] Does it challenge stereotypes or add meaningful artistic understanding?
+- [ ] Is the language precise, respectful, and not tokenising?
+- [ ] Are factual claims sourced or clearly identified as interpretation?
+- [ ] Does it consider access, embodiment, and different ways of being in space?
+- [ ] If it is speculative or multiversal, does disability add to the worldbuilding rather than act as a problem to solve?
+- [ ] Has the content been reviewed for escalation triggers, if applicable?
+
+## Minimal decision flowgraph
+
+```mermaid
+flowchart TD
+    A[Draft or idea received] --> B{Centers disabled people as full agents?}
+    B -- No --> C[Revise or reject: check pity/cure/tokenism]
+    B -- Yes --> D{Avoids ableist stereotypes and reductionism?}
+    D -- No --> C
+    D -- Yes --> E{Evidence and context are adequate?}
+    E -- No --> F[Add sources or clarify as interpretation]
+    E -- Yes --> G{Any escalation trigger?}
+    G -- Yes --> H[Log audit event and request human review]
+    G -- No --> I[Accept or publish]
+    C --> J[Document revision reason]
+    F --> J
+    H --> J
+```
+
 ## Recommended editorial stance
 This repository should favor work that:
 - respects disability as identity and culture,
@@ -141,6 +328,23 @@ The work here should reflect that conviction at every level: in argument, in cri
 When in doubt, ask: does this work expand the room, or does it shrink it? Does it recognize disabled people as whole, complex, and creative? Does it push the conversation forward, or merely recycle what the industry already expects?
 
 If the answer is expansion, complexity, and respect, the work belongs here.
+
+## Version and review metadata
+
+```yaml
+meta:
+  version: "1.0.0"
+  status: "active"
+  last_reviewed: "2026-10-12"
+  reviewed_by: "Double-FW"
+  changelog:
+    - version: "1.0.0"
+      date: "2026-10-12"
+      summary: "Added front matter, machine-readable policy section, quick-start checklist, decision flow, audit requirements, and review metadata."
+  trust:
+    automation_compatible: true
+    human_review_required_for_escalation: true
+```
 
 ---
 
