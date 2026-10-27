@@ -102,6 +102,7 @@ In the words of **Jenny Sealey**, artistic director of Graeae:
 This list showcases the rich representation of disabled characters across theatrical works, spanning classic literature adaptations, contemporary plays, and musical theatre.
 
 **Play/Musical Title | Disabled Character(s) | Writer/Adaptation** 
+
 | 55 Days| **Charles I of England** | Howard Brenton |  
 | All of Us | **Jess + Clients** | Francesca Martinez |  
 | A Christmas Carol | **Tiny Tim** | Charles Dickens |  
