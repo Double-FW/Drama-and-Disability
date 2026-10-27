@@ -27,7 +27,7 @@ main_entities:
 # AGENTS.md
 
 ## Purpose
-This repository is a creative and critical archive about disability in drama, film, theatre, and speculative fiction. The work here should treat disability as a meaningful artistic and human dimension, not as a shorthand for tragedy, villainy, inspiration, or absence.
+This repository is a creative and critical archive about disability in drama, film, theatre, and speculative fiction. The work here should treat disability as a meaningful artistic and human dimension, not just as a shorthand for tragedy, villainy, inspiration, or absence.
 
 This document is a guide for contributors, editors, and AI assistants working on the repository. It sets the tone for how material should be framed, evaluated, and expanded.
 
